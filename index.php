@@ -3,12 +3,12 @@
 try {
   $conn = new \PDO("mysql:host=localhost;dbname=test_00","root","123mudar");
 
-  $query = "select * from products where id={$_GET['id']}";
-  // $query = "insert into products (name,descri) values('JS','JS in SON')";
-  foreach ($conn->query($query) as $product) {
-    echo $product['name']."<br/>";
-    echo $product['descri']."<br/>";
-  }
+  $query = "select * from products where id=:id";
+  $stmt = $conn->prepare($query);
+  $stmt->bindValue(':id',$_GET['id']);
+  $stmt->execute();
+
+  print_r($stmt->fetchAll());
 
 
 } catch (\PDOException $e) {
