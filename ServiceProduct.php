@@ -20,7 +20,7 @@ class ServiceProduct
     }
 
     public function save(){
-
+        $query = "insert into products set values "
     }
 
     public function update(){
