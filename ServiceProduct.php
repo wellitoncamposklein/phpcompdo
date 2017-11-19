@@ -20,7 +20,13 @@ class ServiceProduct
     }
 
     public function save(){
-        $query = "insert into products set values "
+        $query = "insert into products (name,descri) values (:name,:descri) ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(":name",$this->product->getName());
+        $stmt->bindValue(":descri",$this->product->getDescri());
+        $stmt->execute();
+
+        return $this->db->lastInsertId();
     }
 
     public function update(){
