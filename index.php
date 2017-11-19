@@ -14,5 +14,5 @@ $product->setId(1)
 
 $service = new ServiceProduct($db,$product);
 
-print_r($service->delete(1)."<br/>");
-print_r($service->lista());
+//print_r($service->delete(1)."<br/>");
+print_r($service->find(3));

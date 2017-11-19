@@ -48,4 +48,13 @@ class ServiceProduct
 
         return $ret;
     }
+
+    public function find(int $id){
+        $query = "select * from products where id=:id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(":id",$id);
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
 }
